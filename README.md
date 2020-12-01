@@ -1,2 +1,2 @@
-# si-penjualan-ayam-geprek
-Program untuk skripsi
+# Sistem Informasi Penjualan Ayam Geprek Berbasis Web Responsive
+Program untuk skripsiku
