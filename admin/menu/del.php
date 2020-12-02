@@ -15,5 +15,5 @@ if (file_exists("foto_menu/$foto_menu"))
 $sql = mysqli_query($koneksi,"DELETE FROM menu WHERE id_menu='$_GET[id]'");
 
 echo "<script>alert('Menu terhapus');</script>";
-echo "<script>location='data.php?halaman=1';</script>";
+echo "<script>location='data.php';</script>";
 ?>

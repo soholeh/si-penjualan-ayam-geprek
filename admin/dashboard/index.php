@@ -32,7 +32,7 @@ if (!isset($_SESSION['admin'])) {
                                         Jumlah Menu
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="<?=base_url('admin/menu/data.php?halaman=1') ?>">Lihat Detail</a>
+                                        <a class="small text-white stretched-link" href="<?=base_url('admin/menu/data.php') ?>">Lihat Detail</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['admin'])) {
                                         Jumlah Pelanggan
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="<?=base_url('admin/pelanggan/data.php?halaman=1') ?>">Lihat Detail</a>
+                                        <a class="small text-white stretched-link" href="<?=base_url('admin/pelanggan/data.php') ?>">Lihat Detail</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

@@ -20,31 +20,15 @@ $fotolama = $row['foto'];
                                 Ubah Data Slider
                             </li>
                         </ol>
-                        <div class="card">
-                        	<div class="card-body">
-		                        <div class="row">
-		                            <div class="col-md-8 offset-md-2">
-				                        <div class="row justify-content-between">
-		                                    <div class="col-md-4">
-		                                    	<h4>Ubah Slider</h4>
-		                                    </div>
-		                                    <div class="col-md-3 mb-3">
-		                                        <a href="data.php?halaman=1" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
-		                                    </div>
-		                                </div>
-										<form action="" method="post" enctype="multipart/form-data">
-								            <div class="form-group">
-								                <img src="foto/<?= $row['foto']; ?>" class="img-thumbnail">
-								            </div>
-								            <div class="form-group">
-								                <label class="font-weight-bold">Ganti Foto</label>
-								                <input type="file" name="foto" class="form-control-file">
-								                <div class="alert alert-info mt-1 font-weight-bold">Pastikan Resolusi Foto 1100x467 pixel.</div>
-								            </div>
-                                            <div class="col-md-3">
-								                <button class="btn btn-primary btn-block" name="ubah">Ubah</button>
-                                            </div>
-							        	</form>
+
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <div class="card mb-4">
+                                    <div class="card-header font-weight-bold">
+                                        <i class="fas fa-sliders-h mr-1"></i>
+                                        Ubah Slider
+                                    </div>
+                                    <div class="card-body">
 <?php
     if (isset($_POST['ubah'])) {
 
@@ -59,11 +43,29 @@ $fotolama = $row['foto'];
             WHERE id='$_GET[id]'");
         }
         
-        echo "<script>alert('Foto Slider telah diubah');</script>";
-        echo "<script>location='data.php';</script>";
+        echo "<div class='alert alert-info'>Data Dirubah</div>";
+        echo "<meta http-equiv='refresh' content='1;url=data.php'>";
     }
 ?>
-
+			                        <div class="row justify-content-between">
+	                                    <div class="col-md-4"></div>
+	                                    <div class="col-md-3 mb-3">
+	                                        <a href="data.php" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+	                                    </div>
+	                                </div>
+									<form action="" method="post" enctype="multipart/form-data">
+							            <div class="form-group">
+							                <img src="foto/<?= $row['foto']; ?>" class="img-thumbnail">
+							            </div>
+							            <div class="form-group">
+							                <label class="font-weight-bold">Ganti Foto</label>
+							                <input type="file" name="foto" class="form-control-file">
+							                <div class="alert alert-info mt-1 font-weight-bold">Pastikan Resolusi Foto 1100x467 pixel.</div>
+							            </div>
+                                        <div class="col-md-3">
+							                <button class="btn btn-primary btn-block" name="ubah">Ubah</button>
+                                        </div>
+						        	</form>
 		                            </div>
                         		</div>
                     		</div>

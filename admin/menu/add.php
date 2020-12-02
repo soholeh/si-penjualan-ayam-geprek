@@ -23,10 +23,15 @@ while ($row = mysqli_fetch_assoc($sql)) {
                                 Tambah Menu Baru
                             </li>
                         </ol>
-                        <div class="card">
-                        	<div class="card-body">
-		                        <div class="row">
-		                            <div class="col-md-8 offset-md-2">
+
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                            	<div class="card mb-4">
+                                <div class="card-header font-weight-bold">
+                                    <i class="fas fa-utensils mr-1"></i>
+                                    Tambah Menu Baru
+                                </div>
+                                <div class="card-body">
 <?php
     if (isset($_POST['save'])) 
     {
@@ -44,60 +49,58 @@ while ($row = mysqli_fetch_assoc($sql)) {
             VALUES('$nama','$harga','$berat','$foto','$deskripsi','$stok','$kategori')");
 
         echo "<div class='alert alert-info'>Data Tersimpan</div>";
-        echo "<meta http-equiv='refresh' content='1;url=data.php?halaman=1'>";
+        echo "<meta http-equiv='refresh' content='1;url=data.php'>";
     }
 ?>
-				                        <div class="row justify-content-between">
-		                                    <div class="col-md-4">
-		                                    	<h4>Tambah Menu</h4>
-		                                    </div>
-		                                    <div class="col-md-3 mb-3">
-		                                        <a href="data.php?halaman=1" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
-		                                    </div>
-		                                </div>
-										<form action="" method="post" enctype="multipart/form-data">
-										    <div class="form-group">
-										        <label class="font-weight-bold">Nama</label>
-										        <input type="text" class="form-control" name="nama" required autofocus>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Kategori</label>
-										        <select name="id_kategori" class="form-control" required>
-										            <option>-Pilih Kategori-</option>
-										            <?php foreach ($datakategori as $key => $value):?>
-										            <option value="<?= $value["id_kategori"] ?>"><?= $value["nama_kategori"] ?></option>
-										            <?php endforeach ?>
-										        </select>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Harga (Rp)</label>
-										        <input type="number" class="form-control" name="harga" required>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Berat (Gr)</label>
-										        <input type="number" class="form-control" name="berat" required>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Stok</label>
-										        <input type="number" class="form-control" name="stok" required>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Deskripsi</label>
-										        <textarea class="form-control" name="deskripsi" required></textarea>
-										    </div>
-										    <div class="form-group">
-										        <label class="font-weight-bold">Foto</label>
-										        <input type="file" class="form-control-file mb-1" name="foto" required>
-										    </div>
-										    <button class="btn btn-primary" name="save">Simpan</button>
-										</form>
-
-		                            </div>
-                        		</div>
-                    		</div>
-                		</div>
-           			</div>
-        		</main>
+		                        <div class="row justify-content-between">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="data.php?halaman=1" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+                                    </div>
+                                </div>
+								<form action="" method="post" enctype="multipart/form-data">
+								    <div class="form-group">
+								        <label class="font-weight-bold">Nama</label>
+								        <input type="text" class="form-control" name="nama" required autofocus>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Kategori</label>
+								        <select name="id_kategori" class="form-control" required>
+								            <option>-Pilih Kategori-</option>
+								            <?php foreach ($datakategori as $key => $value):?>
+								            <option value="<?= $value["id_kategori"] ?>"><?= $value["nama_kategori"] ?></option>
+								            <?php endforeach ?>
+								        </select>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Harga (Rp)</label>
+								        <input type="number" class="form-control" name="harga" required>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Berat (Gr)</label>
+								        <input type="number" class="form-control" name="berat" required>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Stok</label>
+								        <input type="number" class="form-control" name="stok" required>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Deskripsi</label>
+								        <textarea class="form-control" name="deskripsi" required></textarea>
+								    </div>
+								    <div class="form-group">
+								        <label class="font-weight-bold">Foto</label>
+								        <input type="file" class="form-control-file mb-1" name="foto" required>
+								    </div>
+								    <button class="btn btn-primary" name="save">Simpan</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 
 
 <?php include_once('../_footer.php'); ?>

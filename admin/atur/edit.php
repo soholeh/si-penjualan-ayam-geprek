@@ -1,25 +1,6 @@
 <?php $title = "Pengaturan | Ge-Ju";
 include_once('../_header.php'); ?>
-<?php
-    if (isset($_POST['ubah'])) {
-        $pass = sha1($_POST['pass']);
-        $pass_baru = sha1($_POST['pass_baru']);
 
-        $id = $_SESSION["admin"]["id_user"];
-
-        $data = mysqli_query($koneksi, "SELECT * FROM user WHERE id_user = '$id'");
-        $dapet = mysqli_fetch_assoc($data);
-        $inipw = $dapet['password'];
-
-        if ($pass == $inipw) {
-            $update = mysqli_query($koneksi, "UPDATE user SET password = '$pass_baru' WHERE id_user = '$id'");
-            echo "<script>alert('Password telah diubah');</script>";
-            echo "<script>location='edit.php';</script>";
-        } else {
-            echo "<script>alert('Password tidak sesuai')</script>";
-        }
-    }
-?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -49,9 +30,29 @@ include_once('../_header.php'); ?>
                                                 <label class="font-weight-bold">Password Baru</label>
                                                 <input type="password" name="pass_baru" class="form-control" required>
                                             </div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-3 mb-0">
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-3 mb-2">
                                                 <button class="btn btn-sm btn-primary btn-block" name="ubah">Ubah Password</button>
                                             </div>
+<?php
+    if (isset($_POST['ubah'])) {
+        $pass = sha1($_POST['pass']);
+        $pass_baru = sha1($_POST['pass_baru']);
+
+        $id = $_SESSION["admin"]["id_user"];
+
+        $data = mysqli_query($koneksi, "SELECT * FROM user WHERE id_user = '$id'");
+        $dapet = mysqli_fetch_assoc($data);
+        $inipw = $dapet['password'];
+
+        if ($pass == $inipw) {
+            $update = mysqli_query($koneksi, "UPDATE user SET password = '$pass_baru' WHERE id_user = '$id'");
+            echo "<script>alert('Password telah diubah');</script>";
+            echo "<script>location='edit.php';</script>";
+        } else {
+            echo "<div class='alert alert-danger'>Password tidak sesuai</div>";
+        }
+    }
+?>
                                         </form>
                                     </div>
                                 </div>

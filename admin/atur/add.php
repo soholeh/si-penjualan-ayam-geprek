@@ -14,10 +14,14 @@ include_once('../_header.php');
                                 Tambah Admin Baru
                             </li>
                         </ol>
-                        <div class="card">
-                        	<div class="card-body">
-		                        <div class="row">
-		                            <div class="col-md-8 offset-md-2">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <div class="card mb-4">
+                                <div class="card-header font-weight-bold">
+                                    <i class="fas fa-user mr-1"></i>
+                                    Tambah Admin
+                                </div>
+                                <div class="card-body">
 <?php
     if (isset($_POST['save'])) 
     {
@@ -42,9 +46,7 @@ include_once('../_header.php');
     }
 ?>
 				                        <div class="row justify-content-between">
-		                                    <div class="col-md-4">
-		                                    	<h4>Tambah Admin</h4>
-		                                    </div>
+		                                    <div class="col-md-4"></div>
 		                                    <div class="col-md-3 mb-3">
 		                                        <a href="edit.php" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
 		                                    </div>

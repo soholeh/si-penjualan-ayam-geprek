@@ -59,11 +59,11 @@ if (!isset($_SESSION['admin'])) {
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt mr-1"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="<?= base_url('admin/menu/data.php?halaman=1');?>">
+                            <a class="nav-link" href="<?= base_url('admin/menu/data.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-utensils mr-2"></i></div>
                                 Data Menu
                             </a>
-                            <a class="nav-link" href="<?= base_url('admin/pelanggan/data.php?halaman=1');?>">
+                            <a class="nav-link" href="<?= base_url('admin/pelanggan/data.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users mr-1"></i></div>
                                 Data Pelanggan
                             </a>

@@ -14,10 +14,14 @@ include_once('../_header.php');
                                 Tambah Pelanggan Baru
                             </li>
                         </ol>
-                        <div class="card">
-                        	<div class="card-body">
-		                        <div class="row">
-		                            <div class="col-md-8 offset-md-2">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <div class="card mb-4">
+                                    <div class="card-header font-weight-bold">
+                                        <i class="fas fa-users mr-1"></i>
+                                        Tambah Pelanggan Baru
+                                    </div>
+                                    <div class="card-body">
 <?php
     if (isset($_POST['save'])) 
     {
@@ -33,16 +37,14 @@ include_once('../_header.php');
             VALUES('$nama','$email','$telp','$alamat','$pass','pelanggan')");
 
         echo "<div class='alert alert-info'>Data Tersimpan</div>";
-        echo "<meta http-equiv='refresh' content='1;url=data.php?halaman=1'>";
+        echo "<meta http-equiv='refresh' content='1;url=data.php'>";
     } else {
     	echo "<div class='alert alert-danger'>Password tidak sesuai.</div>";
     }
     }
 ?>
 				                        <div class="row justify-content-between">
-		                                    <div class="col-md-4">
-		                                    	<h4>Tambah Pelanggan</h4>
-		                                    </div>
+		                                    <div class="col-md-4"></div>
 		                                    <div class="col-md-3 mb-3">
 		                                        <a href="data.php?halaman=1" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
 		                                    </div>
