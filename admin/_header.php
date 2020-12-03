@@ -1,10 +1,5 @@
-<?php
-require_once "_config/config.php";
-if (!isset($_SESSION['admin'])) {
-    echo "<script>window.location='".base_url('admin/auth/login.php')."';</script>";
-
-}
-?>
+<?php require_once "_config/config.php";
+if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +89,16 @@ if (!isset($_SESSION['admin'])) {
                     </div>
                     <div class="sb-sidenav-footer fixed-bottom">
                         <div class="small">Logged in as:</div>
+                        <?php if (isset($_SESSION["admin"])): ?>
                         <?= $_SESSION["admin"]["nama"];?>
+                        <?php else: ?>
+                        <?= $_SESSION["pemilik"]["nama"];?>
+                        <?php endif ?>
                     </div>
                 </nav>
             </div>
+<?php 
+} else {
+    header("location: ../auth/login.php");
+}
+?>

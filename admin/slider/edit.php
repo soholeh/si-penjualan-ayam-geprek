@@ -10,6 +10,14 @@ $fotolama = $row['foto'];
 
             <div id="layoutSidenav_content">
                 <main>
+                    <?php 
+                    if (!isset($_SESSION['admin'])) {
+                        echo    "<script>
+                                alert('Anda Bukan Admin');
+                                location='../slider/data.php';
+                            </script>";
+                        } 
+                     ?>
                     <div class="container-fluid">
                         <h3 class="mt-4">Slider</h3>
                         <ol class="breadcrumb mb-3">
@@ -34,12 +42,14 @@ $fotolama = $row['foto'];
 
         $foto = $_FILES['foto']['name'];
         $lokasi = $_FILES['foto']['tmp_name'];
+        $fotofix = date("YmdHis").$foto;
+
         // jika foto dirubah
         if (!empty ($lokasi)) {
-            move_uploaded_file($lokasi, "foto/".$foto);
+            move_uploaded_file($lokasi, "foto/".$fotofix);
             unlink("foto/$fotolama"); // menghapus foto lama
 
-            $sql = mysqli_query($koneksi,"UPDATE slider SET foto='$foto'
+            $sql = mysqli_query($koneksi,"UPDATE slider SET foto = '$fotofix'
             WHERE id='$_GET[id]'");
         }
         

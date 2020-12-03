@@ -4,6 +4,14 @@ include_once('../_header.php');
 
             <div id="layoutSidenav_content">
                 <main>
+                    <?php 
+                    if (!isset($_SESSION['admin'])) {
+                        echo    "<script>
+                                alert('Anda Bukan Admin');
+                                location='../pelanggan/data.php';
+                            </script>";
+                        } 
+                     ?>
                     <div class="container-fluid">
                         <h3 class="mt-4">Pelanggan</h3>
                         <ol class="breadcrumb mb-4">

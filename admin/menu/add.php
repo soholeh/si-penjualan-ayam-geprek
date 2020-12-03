@@ -1,5 +1,5 @@
 <?php $title = "Tambah Menu | Ge-Ju";
-include_once('../_header.php'); 
+include_once('../_header.php');
 $datakategori = array();
 $sql = mysqli_query($koneksi, "SELECT * FROM kategori");
 while ($row = mysqli_fetch_assoc($sql)) {
@@ -13,6 +13,14 @@ while ($row = mysqli_fetch_assoc($sql)) {
 
             <div id="layoutSidenav_content">
                 <main>
+                    <?php 
+                    if (!isset($_SESSION['admin'])) {
+                        echo    "<script>
+                                alert('Anda Bukan Admin');
+                                location='../menu/data.php';
+                            </script>";
+                        } 
+                     ?>
                     <div class="container-fluid">
                         <h3 class="mt-4">Menu</h3>
                         <ol class="breadcrumb mb-4">

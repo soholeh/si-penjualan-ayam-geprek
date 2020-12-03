@@ -1,5 +1,13 @@
 <?php
 require_once "../_config/config.php";
+if (!isset($_SESSION['admin'])) {
+    echo    "<script>
+            alert('Anda Bukan Admin');
+            location='../menu/data.php';
+        </script>";
+        exit();
+    } 
+
 // mendapatkan menu yg dipilih berdasarkan id_menu dari url
 $sql = "SELECT * FROM menu WHERE id_menu='$_GET[id]'";
 $result = mysqli_query($koneksi, $sql);

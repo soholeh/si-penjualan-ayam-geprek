@@ -9,6 +9,14 @@ $user = mysqli_fetch_assoc($result);
 
             <div id="layoutSidenav_content">
                 <main>
+                    <?php 
+                    if (!isset($_SESSION['admin'])) {
+                        echo    "<script>
+                                alert('Anda Bukan Admin');
+                                location='../pelanggan/data.php';
+                            </script>";
+                        } 
+                     ?>
                     <div class="container-fluid">
                         <h1 class="mt-4">Pelanggan</h1>
                         <ol class="breadcrumb mb-4">

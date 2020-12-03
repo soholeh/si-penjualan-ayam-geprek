@@ -1,16 +1,7 @@
 <?php $title = "Dashboard | Ge-Ju";
 include_once('../_header.php'); 
 
-if (!isset($_SESSION['admin'])) {
-
-    echo "<script>
-            alert('Anda harus login');
-            location='../auth';
-        </script>";
-    exit();
-}
-
-?>
+if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
 
             <div id="layoutSidenav_content">
                 <main>
@@ -67,12 +58,19 @@ if (!isset($_SESSION['admin'])) {
                             </div>
                         </div>
                         <!-- <pre><?php print_r($_SESSION);?></pre> -->
+                        <?php if (isset($_SESSION["admin"])): ?>
                         <?php 
                         $nama = $_SESSION["admin"]["nama"];
                         $email = $_SESSION["admin"]["email"];
                         $status = $_SESSION["admin"]["status"];
                          ?>
-
+                        <?php else: ?>
+                        <?php 
+                        $nama = $_SESSION["pemilik"]["nama"];
+                        $email = $_SESSION["pemilik"]["email"];
+                        $status = $_SESSION["pemilik"]["status"];
+                         ?>
+                        <?php endif ?>
                          <div class="col-xl-6">
                             <table class="table table-bordered bg-white border-primary">
                              <thead class="table-info">
@@ -105,3 +103,9 @@ if (!isset($_SESSION['admin'])) {
                 </main>
 
 <?php include_once('../_footer.php'); ?>
+
+<?php 
+} else {
+    header("location: ../auth/login.php");
+}
+?>

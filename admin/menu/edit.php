@@ -18,6 +18,14 @@ $fotolama = $menu['foto_menu'];
 
             <div id="layoutSidenav_content">
                 <main>
+                	<?php 
+                    if (!isset($_SESSION['admin'])) {
+                        echo    "<script>
+                                alert('Anda Bukan Admin');
+                                location='../menu/data.php';
+                            </script>";
+                        } 
+                     ?>
                     <div class="container-fluid">
                         <h1 class="mt-4">Menu</h1>
                         <ol class="breadcrumb mb-4">

@@ -1,4 +1,9 @@
-<?php require_once "../_config/config.php"; ?>
+<?php require_once "../_config/config.php"; 
+error_reporting (E_ALL ^ E_NOTICE);
+if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) {
+    header("location: ../dashboard");
+    } else { ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,32 +56,40 @@
                                                 <button class="btn btn-lg btn-primary btn-block" name="login">Login</button>
                                             </div>
                                         </form>
-                                        <?php
-                                        if (isset($_POST['login'])) {
-                                            $email = $_POST['email'];
-                                            $password = sha1($_POST['pass']);
-                                            
-                                            $sql = "SELECT * FROM user WHERE email ='$email' AND password ='$password' AND status ='admin'";
-                                            $result = mysqli_query($koneksi, $sql);
-                                            $yangcocok = mysqli_num_rows($result);
-                                            if ($yangcocok == 1) {
-                                            $_SESSION['admin']= mysqli_fetch_assoc($result);
-                                            echo    "<script>
-                                                        alert('Anda Berhasil Login');
-                                                        location='../dashboard';
-                                                    </script>";
-
-                                            } else { ?>
-                                            </br>
-                                            <div class="alert alert-danger alert-dismissable" role="alert">
-                                                <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
-                                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                                <strong>Login gagal</strong> Email atau Password salah. 
-                                            </div>
-                                            <?php
-                                            }
-                                        }
-                                        ?>
+<?php
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = sha1($_POST['pass']);
+    
+    $sql = "SELECT * FROM user WHERE email ='$email' AND password ='$password'";
+    $result = mysqli_query($koneksi, $sql);
+    $data = mysqli_fetch_assoc($result);
+    $yangcocok = mysqli_num_rows($result);
+    if ($yangcocok > 0) {
+        if ($data['status'] == "admin") {
+            $_SESSION['admin'] = $data;
+            echo    "<script>
+                alert('Anda Berhasil Login');
+                location='../dashboard';
+            </script>";
+        } else if ($data['status'] == "pemilik") {
+            $_SESSION['pemilik'] = $data;
+            echo    "<script>
+                alert('Anda Berhasil Login');
+                location='../dashboard';
+            </script>";
+        }
+    }else { ?>
+    </br>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+        <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <strong>Login gagal</strong> Email atau Password salah. 
+    </div>
+    <?php
+    }
+}
+?>
                                     </div>
                                 </div>
                             </div>
@@ -99,3 +112,7 @@
         <script src="<?=base_url('admin/_assets/dist/js/scripts.js')?>"></script>
     </body>
 </html>
+
+<?php 
+}
+?>
