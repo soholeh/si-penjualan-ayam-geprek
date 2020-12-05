@@ -1,8 +1,10 @@
 <?php require_once "../_config/config.php"; 
-error_reporting (E_ALL ^ E_NOTICE);
-if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) {
+if (isset($_SESSION['admin'])) {
     header("location: ../dashboard");
-    } else { ?>
+    } else if (isset($_SESSION['pemilik'])) {
+    header("location: ../dashboard");
+    } else { 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
