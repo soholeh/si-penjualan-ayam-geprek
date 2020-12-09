@@ -32,17 +32,17 @@ include_once('../_header.php'); ?>
                                         <tbody>
                                             <?php
                                             $no = 1;
-                                            $sql = "SELECT * FROM slider ORDER BY id ASC";
+                                            $sql = "SELECT * FROM slider ORDER BY id_slider ASC";
                                             $result = mysqli_query($koneksi, $sql);
 
-                                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            while ($slider = mysqli_fetch_assoc($result)) { ?>
                                             <tr>
                                                 <td>Slide <?= $no; ?></td>
                                                 <td>
-                                                    <img src="foto/<?= $row['foto'];?>" class="img-thumbnail" width="200">
+                                                    <img src="foto/<?= $slider['foto_slider'];?>" class="img-thumbnail" width="200">
                                                 </td>
                                                 <td>
-                                                    <a href="edit.php?id=<?= $row['id'];?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href="edit.php?id=<?= $slider['id_slider'];?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $no ++; ?>
@@ -61,11 +61,11 @@ include_once('../_header.php'); ?>
                                     </div>
                                     <div class="card-body pb-0">
                                     <?php
-                                    $result = mysqli_query($koneksi, "SELECT * FROM slider ORDER BY id ASC");?>
+                                    $result = mysqli_query($koneksi, "SELECT * FROM slider ORDER BY id_slider ASC");?>
                                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
                                             <?php
-                                            for($i=0; $i<$row = mysqli_num_rows($result);$i++){
+                                            for($i=0; $i<$slider = mysqli_num_rows($result);$i++){
                                                 echo '
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"';
                                                 if($i==0){echo'class="active"';}echo'></li>';
@@ -73,12 +73,12 @@ include_once('../_header.php'); ?>
                                             </ol>
                                             <div class="carousel-inner">
                                             <?php
-                                            if($row = mysqli_num_rows($result) > 0){
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                if($row['id'] == 1){
+                                            if($slider = mysqli_num_rows($result) > 0){
+                                                while ($slider = mysqli_fetch_assoc($result)) {
+                                                if($slider['id_slider'] == 1){
                                                 echo'<div class="carousel-item active">';}else{echo'<div class="carousel-item">';}
                                                 echo'
-                                                    <img src="foto/'.$row['foto'].'" class="d-block w-100">
+                                                    <img src="foto/'.$slider['foto_slider'].'" class="d-block w-100">
                                                 </div>';
                                             }}?>
                                             </div>

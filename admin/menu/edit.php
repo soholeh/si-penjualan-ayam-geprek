@@ -29,8 +29,11 @@ $fotolama = $menu['foto_menu'];
                     <div class="container-fluid">
                         <h1 class="mt-4">Menu</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">
+                            <li class="breadcrumb-item">
                                 <a href="<?= base_url('admin/dashboard');?>"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="<?= base_url('admin/menu');?>"> Data Menu</a>
                             </li>
                             <li class="breadcrumb-item active">
                                 Ubah Data Menu

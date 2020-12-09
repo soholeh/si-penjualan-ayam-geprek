@@ -1,11 +1,11 @@
 <?php $title = "Ubah Slider | Ge-Ju";
 include_once('../_header.php'); 
 
-$sql = "SELECT * FROM slider WHERE id ='$_GET[id]'";
+$sql = "SELECT * FROM slider WHERE id_slider = '$_GET[id]'";
 $result = mysqli_query($koneksi, $sql);
 
-$row = mysqli_fetch_assoc($result);
-$fotolama = $row['foto'];
+$slider = mysqli_fetch_assoc($result);
+$fotolama = $slider['foto_slider'];
 ?>
 
             <div id="layoutSidenav_content">
@@ -23,6 +23,9 @@ $fotolama = $row['foto'];
                         <ol class="breadcrumb mb-3">
                             <li class="breadcrumb-item active">
                                 <a href="<?= base_url('admin/dashboard');?>"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="<?= base_url('admin/pelanggan');?>"> Kelola Slider</a>
                             </li>
                             <li class="breadcrumb-item active">
                                 Ubah Data Slider
@@ -49,8 +52,8 @@ $fotolama = $row['foto'];
             move_uploaded_file($lokasi, "foto/".$fotofix);
             unlink("foto/$fotolama"); // menghapus foto lama
 
-            $sql = mysqli_query($koneksi,"UPDATE slider SET foto = '$fotofix'
-            WHERE id='$_GET[id]'");
+            $sql = mysqli_query($koneksi,"UPDATE slider SET foto_slider = '$fotofix'
+            WHERE id_slider = '$_GET[id]'");
         }
         
         echo "<div class='alert alert-info'>Data Dirubah</div>";
@@ -65,7 +68,7 @@ $fotolama = $row['foto'];
 	                                </div>
 									<form action="" method="post" enctype="multipart/form-data">
 							            <div class="form-group">
-							                <img src="foto/<?= $row['foto']; ?>" class="img-thumbnail">
+							                <img src="foto/<?= $slider['foto_slider']; ?>" class="img-thumbnail">
 							            </div>
 							            <div class="form-group">
 							                <label class="font-weight-bold">Ganti Foto</label>

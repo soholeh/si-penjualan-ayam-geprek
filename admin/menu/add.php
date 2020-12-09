@@ -24,8 +24,11 @@ while ($row = mysqli_fetch_assoc($sql)) {
                     <div class="container-fluid">
                         <h3 class="mt-4">Menu</h3>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">
+                            <li class="breadcrumb-item">
                                 <a href="<?= base_url('admin/dashboard');?>"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a href="<?= base_url('admin/menu');?>"> Data Menu</a>
                             </li>
                             <li class="breadcrumb-item active">
                                 Tambah Menu Baru

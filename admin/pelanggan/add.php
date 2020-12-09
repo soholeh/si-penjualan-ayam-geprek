@@ -15,8 +15,11 @@ include_once('../_header.php');
                     <div class="container-fluid">
                         <h3 class="mt-4">Pelanggan</h3>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">
+                            <li class="breadcrumb-item">
                                 <a href="<?= base_url('admin/dashboard');?>"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="<?= base_url('admin/pelanggan');?>"> Data Pelanggan</a>
                             </li>
                             <li class="breadcrumb-item active">
                                 Tambah Pelanggan Baru

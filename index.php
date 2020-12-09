@@ -1,11 +1,11 @@
 <?php $title = "Ge-Ju";
-include_once('layout/_header.php');  ?>
-                   
+include_once('layout/header.php'); ?>
+                    
             <!-- Slider -->
             <div class="col-md-9 ml-auto p-2 pt-4">
             <div class="card">
             <?php
-            $result = mysqli_query($koneksi, "SELECT * FROM slider ORDER BY id ASC");?>
+            $result = mysqli_query($koneksi, "SELECT * FROM slider ORDER BY id_slider ASC");?>
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     <?php
@@ -19,10 +19,10 @@ include_once('layout/_header.php');  ?>
                     <?php
                     if($row = mysqli_num_rows($result) > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
-                        if($row['id'] == 1){
+                        if($row['id_slider'] == 1){
                         echo'<div class="carousel-item active">';}else{echo'<div class="carousel-item">';}
                         echo'
-                            <img src="admin/slider/foto/'.$row['foto'].'" class="d-block w-100">
+                            <img src="admin/slider/foto/'.$row['foto_slider'].'" class="d-block w-100">
                         </div>';
                     }}?>
                     </div>
@@ -58,5 +58,5 @@ include_once('layout/_header.php');  ?>
 
                 </div>
             </div>
-                
-<?php include_once('layout/_footer.php');  ?>
+
+<?php include_once('layout/footer.php'); ?>

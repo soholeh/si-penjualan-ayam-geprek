@@ -23,6 +23,9 @@ $user = mysqli_fetch_assoc($result);
                             <li class="breadcrumb-item active">
                                 <a href="<?= base_url('admin/dashboard');?>"><i class="fas fa-home"></i> Home</a>
                             </li>
+                            <li class="breadcrumb-item">
+                                <a href="<?= base_url('admin/pelanggan');?>"> Data Pelanggan</a>
+                            </li>
                             <li class="breadcrumb-item active">
                                 Ubah Data Pelanggan
                             </li>
