@@ -40,7 +40,7 @@
         <script src="https://kit.fontawesome.com/b0297d4762.js" crossorigin="anonymous"></script>
         <title><?= $title ?></title>
     </head>
-    <body>
+    <body class="bg bg-light">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -67,7 +67,7 @@
                         <!-- Selain itu belum login atau tidak ada session -->
                         <?php else: ?>
                         <li class="nav-item mr-5">
-                            <a class="nav-link" href="info.php">Info Pembayaran</a>
+                            <a class="nav-link" href="<?= base_url('info.php');?>">Info Pembayaran</a>
                         </li>
                         <!-- Jika sudah login ada session pelanggan -->
                     </ul>

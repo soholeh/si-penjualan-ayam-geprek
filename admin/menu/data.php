@@ -27,7 +27,9 @@ include_once('../_header.php'); ?>
                                     </div>
                                     <div class="card-body">
                                     <div class="col-md-3 mb-3">
+                                        <?php if (isset($_SESSION["admin"])): ?>   
                                         <a href="add.php" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Tambah Menu</a>
+                                        <?php endif ?>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-responsive-sm table-bordered table-hover" id="menu">
@@ -40,7 +42,9 @@ include_once('../_header.php'); ?>
                                                     <th>Berat</th>
                                                     <th>Foto</th>
                                                     <th>Stok</th>
+                                                    <?php if (isset($_SESSION["admin"])): ?> 
                                                     <th>Aksi</th>
+                                                    <?php endif ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -74,10 +78,12 @@ include_once('../_header.php'); ?>
                                                         <img src="foto_menu/<?= $row['foto_menu'];?>" width="100px">
                                                     </td>
                                                     <td><?= $row['stok_menu'];?></td>
+                                                    <?php if (isset($_SESSION["admin"])): ?>                                                       
                                                     <td>
                                                         <a href="edit.php?id=<?= $row['id_menu'];?>" class="btn btn-warning mb-1"><i class="fas fa-pencil-alt"></i></a>
                                                         <a href="del.php?id=<?= $row['id_menu'];?>" class="btn btn-danger mb-1" onClick="return confirm('Yakin akan menghapus menu <?= $row['nama_menu']; ?>?')"><i class="fas fa-eraser"></i></a>
                                                     </td>
+                                                    <?php endif ?>
                                                 </tr>
                                                 <?php $nomor ++; ?>
                                                 <?php } ?>

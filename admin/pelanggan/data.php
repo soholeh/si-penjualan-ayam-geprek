@@ -23,7 +23,9 @@ include_once('../_header.php'); ?>
                                     </div>
                                     <div class="card-body">
                                     <div class="col-md-5 mb-3">
+                                        <?php if (isset($_SESSION["admin"])): ?>
                                         <a href="add.php" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Tambah Pelanggan</a>
+                                        <?php endif ?>
                                     </div>
                                     <div class="table-responsive">
                                     <table class="table table-responsive-sm table-bordered table-hover" id="pelanggan">
@@ -33,7 +35,9 @@ include_once('../_header.php'); ?>
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Telepon</th>
+                                                <?php if (isset($_SESSION["admin"])): ?>
                                                 <th>Aksi</th>
+                                                <?php endif ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,10 +67,12 @@ include_once('../_header.php'); ?>
                                                 <td><?= $user['nama']; ?></td>
                                                 <td><?= $user['email']; ?></td>
                                                 <td><?= $user['telephone']; ?></td>
+                                                <?php if (isset($_SESSION["admin"])): ?>                                
                                                 <td>
                                                     <a href="edit.php?id=<?= $user['id_user']; ?>" class="btn btn-warning mb-1"><i class="fas fa-pencil-alt"></i></a>
                                                     <a href="del.php?id=<?= $user['id_user']; ?>" class="btn btn-danger mb-1" onClick="return confirm('Yakin akan menghapus pelanggan <?= $user['nama']; ?>?')"><i class="fas fa-eraser"></i></a>
                                                 </td>
+                                                <?php endif ?>
                                             </tr>
                                             <?php 
                                             $nomor ++;
