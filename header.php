@@ -80,14 +80,14 @@
                     <div class="dropdown float-right">
                     <!-- Jika sudah login ada session pelanggan -->
                     <?php if (isset($_SESSION["pelanggan"])): ?>
-                        <a class="btn btn-primary float-right" href="logout.php">Logout <i class="fas fa-sign-out-alt"></i></a>
+                        <a class="btn btn-primary float-right" href="<?= base_url('auth_/logout.php'); ?>">Logout <i class="fas fa-sign-out-alt"></i></a>
                     <!-- Selain itu belum login atau tidak ada session -->
                     <?php else: ?>
                         <button type="button" class="btn btn-primary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">Login or Register</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                            <a class="dropdown-item" href="login.php">Login <i class="fas fa-sign-in-alt"></i></a>
+                            <a class="dropdown-item" href="<?= base_url('auth_/login.php'); ?>">Login <i class="fas fa-sign-in-alt"></i></a>
                                 <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="daftar.php">Register</a>
+                            <a class="dropdown-item" href="<?= base_url('auth_/daftar.php'); ?>">Register</a>
                         </div>
                     <?php endif ?>
                     </div>        
