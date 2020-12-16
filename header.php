@@ -128,7 +128,7 @@
                         <?php
                             if(isset($_SESSION['keranjang'])){
                                         $subtotal = 0;
-                            foreach ($_SESSION['keranjang'] as $id_produk => $jumlah){
+                            foreach ($_SESSION['keranjang'] as $id_menu => $jumlah){
                                 $sql = "SELECT * FROM menu WHERE id_menu='$id_menu'";
                                 $result = mysqli_query($koneksi, $sql);
                                 $row = mysqli_fetch_assoc($result);
@@ -137,12 +137,12 @@
                                     $subtotal += $total;
                                 }
                             }
-                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="keranjang.php"><i class="fas fa-money-check-alt text-success"></i><span class="badge badge-pill badge-success"> Rp. '.number_format($subtotal).'</span></a></li>';
+                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success"></i> <span class="badge badge-pill badge-success"> Rp. '.number_format($subtotal).'</span></a></li>';
                             }else {
-                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="keranjang.php"><i class="fas fa-money-check-alt text-success mr-1"></i><span class="badge badge-pill badge-success"> Rp. 0,00</span></a></li>';
+                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success mr-1"></i><span class="badge badge-pill badge-success"> Rp. 0,00</span></a></li>';
                             }                
                         ?>
-                        <li class="list-group-item border-primary"><a class="dropdown-item" href="keranjang.php"><i class="fas fa-search-dollar"></i> Lihat Detail</a></li>
+                        <li class="list-group-item border-primary"><a class="dropdown-item" href="<?= base_url('pelanggan/keranjang.php'); ?>"><i class="fas fa-search-dollar"></i> Lihat Detail</a></li>
                     </div>
                 </ul>
             </div>

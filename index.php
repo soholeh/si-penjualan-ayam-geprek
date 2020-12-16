@@ -63,7 +63,7 @@ include_once('header.php'); ?>
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?= $row['nama_menu'];?> <span class="badge badge-secondary small"> New!</span></h5>
                                                     <p class="card-text"><span class="badge badge-pill badge-success">Rp. <?= number_format($row['harga_menu']);?></span></p>
-                                                    <a href="detail.php?id=<?= $row['id_menu'];?>" class="btn btn-primary mt-2 btn-block">Pesan <i class="fas fa-comment-dollar"></i></a>
+                                                    <a href="menu_makanan/detail.php?id=<?= $row['id_menu'];?>" class="btn btn-primary mt-2 btn-block">Pesan <i class="fas fa-comment-dollar"></i></a>
                                                 </div>
                                             </div>
                                             <?php }?>
