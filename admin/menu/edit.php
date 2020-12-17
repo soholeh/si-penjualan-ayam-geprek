@@ -53,7 +53,6 @@ $fotolama = $menu['foto_menu'];
 	        $stok = $_POST['stok'];
 	        $deskripsi = $_POST['deskripsi'];
 	        $harga = $_POST['harga'];
-	        $berat = $_POST['berat'];
 	        $kategori = $_POST['id_kategori'];
 	        $foto = $_FILES['foto']['name'];
 	        $lokasi = $_FILES['foto']['tmp_name'];
@@ -63,12 +62,12 @@ $fotolama = $menu['foto_menu'];
 	            unlink("foto_menu/$fotolama"); // menghapus foto lama
 
 	            $sql = mysqli_query($koneksi,"UPDATE menu SET id_kategori='$kategori', nama_menu='$nama',
-	            harga_menu='$harga', berat_menu='$berat', foto_menu='$foto',
+	            harga_menu='$harga', foto_menu='$foto',
 	            deskripsi_menu='$deskripsi', stok_menu='$stok' WHERE id_menu='$_GET[id]'");
 	        }
 	        else {
 	            $sql = mysqli_query($koneksi,"UPDATE menu SET id_kategori='$kategori', nama_menu='$nama',
-	            harga_menu='$harga', berat_menu='$berat',
+	            harga_menu='$harga',
 	            deskripsi_menu='$deskripsi', stok_menu='$stok' WHERE id_menu='$_GET[id]'");
 	        }
 	        echo "<div class='alert alert-info'>Data Menu telah diubah</div>";
@@ -100,10 +99,6 @@ $fotolama = $menu['foto_menu'];
 									    <div class="form-group">
 									        <label class="font-weight-bold">Harga (Rp)</label>
 									        <input type="number" class="form-control" name="harga" value="<?= $menu['harga_menu']; ?>" required>
-									    </div>
-									    <div class="form-group">
-									        <label class="font-weight-bold">Berat (Gr)</label>
-									        <input type="number" class="form-control" name="berat" value="<?= $menu['berat_menu']; ?>" required>
 									    </div>
 									    <div class="form-group">
 									        <label class="font-weight-bold">Stok</label>

@@ -9,6 +9,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link href="<?=base_url('admin/_assets/dataTables/Responsive-2.2.6/css/responsive.bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <link href="<?=base_url('admin/_assets/dataTables/datatables.css')?>" rel="stylesheet" type="text/css" />
         <!-- Add icon library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
@@ -62,7 +65,7 @@
                         </li>
                         <?php if (isset($_SESSION["pelanggan"])): ?>
                         <li class="nav-item mr-5">
-                            <a class="nav-link" href="riwayat.php">Riwayat Belanja</a>
+                            <a class="nav-link" href="<?= base_url('pelanggan/riwayat.php'); ?>">Riwayat Belanja</a>
                         </li>
                         <!-- Selain itu belum login atau tidak ada session -->
                         <?php else: ?>
@@ -99,31 +102,31 @@
         <div class="row mt-5 no-gutters">
             <div class="col-md-3">
                 <ul class="list-group list-group-flush p-2 pt-4">
-                    <div class="card">
+                    <div class="card border-primary">
                         <li class="list-group-item bg-primary"><i class="fas fa-list"></i> Kategori Menu</li>
                         <?php 
                             $cemilan = mysqli_query($koneksi,"SELECT * FROM menu LEFT JOIN kategori 
                             ON menu.id_kategori = kategori.id_kategori WHERE nama_kategori = 'Makanan Ringan' AND stok_menu > 0");
                             $jumlah_cemilan = mysqli_num_rows($cemilan);
                         ?>
-                        <li class="list-group-item border-primary"><a href="<?= base_url('menu_makanan/cemilan.php');?>" class="text-dark"><i class="fas fa-pizza-slice"></i> Cemilan <span class="badge badge-info"><?= $jumlah_cemilan; ?></span></a></li>
+                        <li class="list-group-item border-light"><a href="<?= base_url('menu_makanan/cemilan.php');?>" class="text-dark"><i class="fas fa-pizza-slice"></i> Cemilan <span class="badge badge-info"><?= $jumlah_cemilan; ?></span></a></li>
                         <?php 
                             $makber = mysqli_query($koneksi,"SELECT * FROM menu LEFT JOIN kategori 
                             ON menu.id_kategori = kategori.id_kategori WHERE nama_kategori = 'Makanan Berat' AND stok_menu > 0");
                             $jumlah_makber = mysqli_num_rows($makber);
                         ?>
-                        <li class="list-group-item border-primary"><a href="<?= base_url('menu_makanan/mkn_berat.php');?>" class="text-dark"><i class="fas fa-utensils"></i> Makanan Berat <span class="badge badge-info"><?= $jumlah_makber; ?></span></a></li>
+                        <li class="list-group-item border-light"><a href="<?= base_url('menu_makanan/mkn_berat.php');?>" class="text-dark"><i class="fas fa-utensils"></i> Makanan Berat <span class="badge badge-info"><?= $jumlah_makber; ?></span></a></li>
                         <?php 
                             $minum = mysqli_query($koneksi,"SELECT * FROM menu LEFT JOIN kategori 
                             ON menu.id_kategori = kategori.id_kategori WHERE nama_kategori = 'Minuman' AND stok_menu > 0");
                             $jumlah_minum = mysqli_num_rows($minum);
                         ?>
-                        <li class="list-group-item border-primary"><a href="<?= base_url('menu_makanan/minuman.php');?>" class="text-dark"><i class="fas fa-wine-glass-alt"></i> Minuman <span class="badge badge-info"><?= $jumlah_minum; ?></span></a></li>
+                        <li class="list-group-item"><a href="<?= base_url('menu_makanan/minuman.php');?>" class="text-dark"><i class="fas fa-wine-glass-alt"></i> Minuman <span class="badge badge-info"><?= $jumlah_minum; ?></span></a></li>
                     </div>
                 </ul>
                 <!-- Keranjang -->
                 <ul class="list-group list-group-flush p-2 pt-4">
-                    <div class="card">   
+                    <div class="card border-primary">   
                         <li class="list-group-item bg-primary"><i class="fas fa-cart-plus"></i> Keranjang Belanja</li>
                         <?php
                             if(isset($_SESSION['keranjang'])){
@@ -137,12 +140,12 @@
                                     $subtotal += $total;
                                 }
                             }
-                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success"></i> <span class="badge badge-pill badge-success"> Rp. '.number_format($subtotal).'</span></a></li>';
+                            echo '<li class="list-group-item border-light"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success"></i> <span class="badge badge-pill badge-success"> Rp. '.number_format($subtotal).'</span></a></li>';
                             }else {
-                            echo '<li class="list-group-item border-primary"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success mr-1"></i><span class="badge badge-pill badge-success"> Rp. 0,00</span></a></li>';
+                            echo '<li class="list-group-item border-light"><a class="dropdown-item" href="'.base_url('pelanggan/keranjang.php').'"><i class="fas fa-money-check-alt text-success mr-1"></i><span class="badge badge-pill badge-success"> Rp. 0,00</span></a></li>';
                             }                
                         ?>
-                        <li class="list-group-item border-primary"><a class="dropdown-item" href="<?= base_url('pelanggan/keranjang.php'); ?>"><i class="fas fa-search-dollar"></i> Lihat Detail</a></li>
+                        <li class="list-group-item"><a class="dropdown-item" href="<?= base_url('pelanggan/keranjang.php'); ?>"><i class="fas fa-search-dollar"></i> Lihat Detail</a></li>
                     </div>
                 </ul>
             </div>

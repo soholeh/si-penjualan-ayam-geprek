@@ -33,8 +33,7 @@ include_once('../header.php'); ?>
     if ($yangcocok == 1) {
       $_SESSION['pelanggan']= mysqli_fetch_assoc($result);
       echo "<script>alert('Anda Berhasil Login');</script>";
-      // echo "<meta http-equiv='refresh' content='1;url=checkout.php'>";
-      echo "<meta http-equiv='refresh' content='1;url=../index.php'>";
+      echo "<meta http-equiv='refresh' content='1;url=../pelanggan/checkout.php'>";
     } else {
       echo "<script>alert('Login Gagal');</script>";
       echo "<meta http-equiv='refresh' content='1;url=login.php'>";

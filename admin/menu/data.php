@@ -39,7 +39,6 @@ include_once('../_header.php'); ?>
                                                     <th>Kategori</th>
                                                     <th>Nama</th>
                                                     <th>Harga</th>
-                                                    <th>Berat</th>
                                                     <th>Foto</th>
                                                     <th>Stok</th>
                                                     <?php if (isset($_SESSION["admin"])): ?> 
@@ -73,7 +72,6 @@ include_once('../_header.php'); ?>
                                                     <td><?= $row['nama_kategori'];?></td>
                                                     <td><?= $row['nama_menu'];?></td>
                                                     <td>Rp. <?= number_format($row['harga_menu']);?></td>
-                                                    <td><?= $row['berat_menu'];?> gr</td>
                                                     <td>
                                                         <img src="foto_menu/<?= $row['foto_menu'];?>" width="100px">
                                                     </td>

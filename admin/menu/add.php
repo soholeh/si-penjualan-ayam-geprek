@@ -50,14 +50,13 @@ while ($row = mysqli_fetch_assoc($sql)) {
         $kategori = $_POST['id_kategori'];
         $deskripsi = $_POST['deskripsi'];
         $harga = $_POST['harga'];
-        $berat = $_POST['berat'];
         $stok = $_POST['stok'];
         $foto = $_FILES['foto']['name'];
         $lokasi = $_FILES['foto']['tmp_name'];
         move_uploaded_file($lokasi, "foto_menu/".$foto);
         $sql = mysqli_query($koneksi, "INSERT INTO menu
-            (nama_menu,harga_menu,berat_menu,foto_menu,deskripsi_menu,stok_menu,id_kategori)
-            VALUES('$nama','$harga','$berat','$foto','$deskripsi','$stok','$kategori')");
+            (nama_menu,harga_menu,foto_menu,deskripsi_menu,stok_menu,id_kategori)
+            VALUES('$nama','$harga','$foto','$deskripsi','$stok','$kategori')");
 
         echo "<div class='alert alert-info'>Data Tersimpan</div>";
         echo "<meta http-equiv='refresh' content='1;url=data.php'>";
@@ -87,10 +86,6 @@ while ($row = mysqli_fetch_assoc($sql)) {
 								    <div class="form-group">
 								        <label class="font-weight-bold">Harga (Rp)</label>
 								        <input type="number" class="form-control" name="harga" required>
-								    </div>
-								    <div class="form-group">
-								        <label class="font-weight-bold">Berat (Gr)</label>
-								        <input type="number" class="form-control" name="berat" required>
 								    </div>
 								    <div class="form-group">
 								        <label class="font-weight-bold">Stok</label>
