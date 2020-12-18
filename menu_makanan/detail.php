@@ -3,7 +3,7 @@ include_once('../header.php'); ?>
 <?php
     $id_menu = $_GET["id"];
 
-    $ambil = mysqli_query($koneksi, "SELECT * FROM menu WHERE id_menu='$id_menu'");
+    $ambil = mysqli_query($koneksi, "SELECT * FROM menu WHERE id_menu = '$id_menu'");
     $detail = mysqli_fetch_assoc($ambil);
 
     // echo "<pre>";

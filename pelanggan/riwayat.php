@@ -43,6 +43,12 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"])) {
                                             <?php if ($row['status_penjualan']=='Confirmed'): ?>
                                             <span class="badge badge-success small"><?= $row['status_penjualan'];?></span>
                                             <?php endif ?>
+                                            <?php if ($row['status_penjualan']=='Lunas'): ?>
+                                            <span class="badge badge-primary small"><?= $row['status_penjualan'];?></span>
+                                            <?php endif ?>
+                                            <?php if ($row['status_penjualan']=='Batal'): ?>
+                                            <span class="badge badge-danger small"><?= $row['status_penjualan'];?></span>
+                                            <?php endif ?>
                                             </br>
                                             <?php if (!empty($row['resi_pengiriman'])): ?>
                                             Resi : <?= $row['resi_pengiriman']; ?>
@@ -51,9 +57,12 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"])) {
                                         <td>Rp. <?= number_format($row['total_penjualan']);?></td>
                                         <td>
                                             <a href="nota.php?id=<?= $row["id_penjualan"]; ?>" class="btn btn-success"><i class="fas fa-file-invoice"></i></a>
-                                            <?php if ($row['status_penjualan']=="Pending") :?>
+                                            <?php if ($row['status_penjualan']!=="Lunas") :?>
                                             <a href="pembayaran.php?id=<?= $row["id_penjualan"]; ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i></a>
                                             <?php else: ?>
+                                            <a href="lihat_pembayaran.php?id=<?= $row["id_penjualan"];?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
+                                            <?php endif ?>
+                                            <?php if ($row['status_penjualan']=="Confirmed"): ?>
                                             <a href="lihat_pembayaran.php?id=<?= $row["id_penjualan"];?>" class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                             <?php endif ?>
                                         </td>

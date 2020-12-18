@@ -29,7 +29,7 @@ if ($id_pelanggan_beli !== $id_pelanggan_login) {
     exit();
 }
 if ($status_pembelian == $status) {
-    echo "<script>alert('Anda telah melakukan pembayaran!');</script>";
+    echo "<script>alert('Anda telah mengirim bukti pembayaran, mohon menunggu konfirmasi');</script>";
     echo "<script>location='riwayat.php';</script>";
     exit();
 }
@@ -53,8 +53,8 @@ if ($status_pembelian == $status) {
                                     <input type="text" class="form-control" name="bank" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Jumlah</label>
-                                    <input type="number" class="form-control" name="jumlah" min="1" required>
+                                    <label for="">Jumlah Pembayaran (Rp)</label>
+                                    <input type="number" class="form-control" name="jumlah" min="1" value="<?= $detpem['total_penjualan']; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Foto Bukti</label>

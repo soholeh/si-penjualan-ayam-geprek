@@ -1,10 +1,5 @@
 <?php $title = "Pengaturan | Ge-Ju";
 include_once('../_header.php'); 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-include('../_assets/phpmailer/src/Exception.php');
-include('../_assets/phpmailer/src/PHPMailer.php');
-include('../_assets/phpmailer/src/SMTP.php');
 ?>
 
             <div id="layoutSidenav_content">
@@ -65,39 +60,6 @@ include('../_assets/phpmailer/src/SMTP.php');
             echo "<script>alert('Password telah diubah');</script>";
             echo "<script>location='edit.php';</script>";
         }
-        if (($update)) {
-            $sql = mysqli_query($koneksi, "SELECT * FROM user WHERE status = 'admin'");
-            // $admin = mysqli_fetch_assoc($sql);
-
-            while ($admin = mysqli_fetch_assoc($sql)) {
-            $email_pengirim = 'msolehudin130998@gmail.com'; // Email pengirim nantinya
-            $nama_pengirim = 'Admin.Ge-Ju'; 
-            $email_penerima = $admin["email"];
-            $subjek = 'Password diubah!';
-            $pesan = 'Password anda berhasil diubah! http://';
-
-            $mail = new PHPMailer;
-            $mail->isSMTP();
-
-            $mail->Host = 'smtp.gmail.com';
-            $mail->Username = $email_pengirim;
-            $mail->Password = 'miptqgooetoaeheg';
-            $mail->Port = 465;
-            $mail->SMTPAuth = true;
-            $mail->SMTPSecure = 'ssl';
-            $mail->SMTPDebug = 2;
-
-
-
-            $mail->setFrom($email_pengirim, $email_pengirim);
-            $mail->addAddress($email_penerima);
-            $mail->isHTML(true);
-            $mail->Subject = $subjek;
-            $mail->Body = $pesan;
-
-            $send = $mail->send();
-        }
-    }
         else {
             echo "<div class='alert alert-danger'>Password tidak sesuai</div>";
         }

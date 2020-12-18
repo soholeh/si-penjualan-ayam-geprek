@@ -47,7 +47,11 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
                             <div class="col-xl-4">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
-                                    <h1>7 <i class="fas fa-retweet text-secondary float-right fa-2x"></i></h1>
+                                        <?php 
+                                            $penjualan = mysqli_query($koneksi,"SELECT * FROM penjualan");
+                                            $jumlah_penjualan = mysqli_num_rows($penjualan);
+                                         ?>
+                                    <h1><?= $jumlah_penjualan; ?> <i class="fas fa-retweet text-secondary float-right fa-2x"></i></h1>
                                         Jumlah Penjualan
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">

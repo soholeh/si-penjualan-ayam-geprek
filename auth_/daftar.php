@@ -14,7 +14,10 @@ include_once('../header.php'); ?>
                             <label for="inputEmail" class="sr-only">Email</label>
                                 <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
                             <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" name="password" id="inputPassword" class="form-control mb-2" placeholder="Password" required>
+                                <input type="password" name="password" id="pw" class="form-control mb-2" placeholder="Password" required>
+                                <div class="form-group small">
+                                    <input type="checkbox" onclick="lihatpw()"> Lihat Password
+                                </div>
                             <label for="" class="sr-only">Alamat</label>
                             <textarea name="alamat" class="form-control mb-2" placeholder="Alamat"></textarea>
                             <label for="" class="sr-only">No. Telpon / WA</label>
@@ -57,3 +60,14 @@ include_once('../header.php'); ?>
                 </div>
 
 <?php include_once('../footer.php'); ?>
+
+    <script>
+    function lihatpw() {
+      var x = document.getElementById("pw");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>

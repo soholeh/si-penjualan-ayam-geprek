@@ -77,7 +77,7 @@ $fotolama = $menu['foto_menu'];
 			                        <div class="row justify-content-between">
 	                                    <div class="col-md-4"></div>
 	                                    <div class="col-md-3 mb-3">
-	                                        <a href="data.php?halaman=1" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+	                                        <a href="data.php" class="btn btn-success float-right"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
 	                                    </div>
 	                                </div>
 									<form action="" method="post" enctype="multipart/form-data">
