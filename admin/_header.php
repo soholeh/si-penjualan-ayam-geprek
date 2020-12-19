@@ -66,26 +66,46 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
                                 <div class="sb-nav-link-icon"><i class="fas fa-retweet mr-1"></i></div>
                                 Transaksi / Pesanan
                             </a>
-                            <a class="nav-link" href="<?= base_url('admin/laporan/data.php');?>">
+                            <?php if (isset($_SESSION["pemilik"])): ?>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file-alt mr-2"></i>&nbsp;</div>
                                 Laporan Penjualan
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="<?= base_url('admin/grafik/data.php');?>">
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="<?= base_url('admin/laporan/per_periode.php');?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt mr-2"></i></div>
+                                        Per-Periode
+                                    </a>
+                                    <a class="nav-link" href="<?= base_url('admin/laporan/per_menu.php');?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-utensils mr-2"></i></div>
+                                        Per-Menu
+                                    </a>
+                                    <a class="nav-link" href="<?= base_url('admin/laporan/per_pelanggan.php');?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-users mr-1"></i></div>
+                                        Per-Pelanggan
+                                    </a>
+                                </nav>
+                            </div>
+                            <?php endif ?>
+
+                            <!-- <a class="nav-link" href="<?= base_url('admin/grafik/data.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-bar mr-2"></i></div>
-                                Grafik
-                            </a>
+                                Grafik Stok Menu
+                            </a> -->
                             <a class="nav-link" href="<?= base_url('admin/slider/data.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-angle-left"></i><i class="fas fa-angle-right mr-2"></i></div>
                                 Kelola Slider
                             </a>
-                            <a class="nav-link" href="<?= base_url('admin/atur/edit.php');?>">
+                            <!-- <a class="nav-link" href="<?= base_url('admin/atur/edit.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cogs mr-1"></i></div>
                                 Pengaturan
                             </a>
                             <a class="nav-link" href="<?= base_url('admin/auth/logout.php');?>" onClick="return confirm('Yakin keluar dari Ge-Ju?')">
                                 <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt mr-2"></i></div>
                                 Logout
-                            </a>
+                            </a> -->
                     </div>
                     <div class="sb-sidenav-footer fixed-bottom">
                         <div class="small">Logged in as:</div>

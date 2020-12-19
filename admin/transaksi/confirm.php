@@ -82,6 +82,8 @@ include_once('../_header.php'); ?>
                                     </div>
                                 </div>
                             </div>
+                            <?php if (!isset($_SESSION["pemilik"])): ?>
+                                
                                         <?php if ($dapet['status_penjualan'] !== "Lunas"): ?>
                             <div class="col-xl-4">
                                 <div class="card mb-4">
@@ -93,7 +95,7 @@ include_once('../_header.php'); ?>
                                         <form action="" method="post">
                                             <div class="form-group">
                                                 <select name="status" class="form-control" required autofocus>
-                                                    <option value="">Pilih Status</option>
+                                                    <option disabled selected value="">Pilih Status</option>
                                                     <option value="Lunas">Lunas</option>
                                                     <option value="Batal">Batal</option>
                                                 </select>
@@ -125,6 +127,7 @@ include_once('../_header.php'); ?>
                                             <button class="btn btn-primary btn-block" name="proses"><i class="fas fa-spinner mr-1"></i>Proses</button>
                                         </form>
                                         <?php endif ?>
+                            <?php endif ?>
                                         <?php
                                         if (isset($_POST["proses"])) {
                                             $resi = $_POST["resi"];

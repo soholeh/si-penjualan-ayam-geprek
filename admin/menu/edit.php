@@ -88,7 +88,7 @@ $fotolama = $menu['foto_menu'];
 									    <div class="form-group">
 									        <label class="font-weight-bold">Kategori</label>
 									        <select name="id_kategori" class="form-control" required>
-									            <option>-Pilih Kategori-</option>
+									            <option disabled value="">-Pilih Kategori-</option>
 									            <?php foreach ($datakategori as $key => $value):?>
 									            <option value="<?= $value["id_kategori"] ?>" <?php if($menu["id_kategori"]==$value["id_kategori"]){ echo "selected"; } ?> >
 									            <?= $value["nama_kategori"] ?>

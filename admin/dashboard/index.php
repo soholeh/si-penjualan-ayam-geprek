@@ -3,6 +3,21 @@ include_once('../_header.php');
 
 if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
 
+    <!-- <pre><?php print_r($_SESSION);?></pre> -->
+    <?php if (isset($_SESSION["admin"])): ?>
+    <?php 
+    $nama = $_SESSION["admin"]["nama"];
+    $email = $_SESSION["admin"]["email"];
+    $status = $_SESSION["admin"]["status"];
+     ?>
+    <?php else: ?>
+    <?php 
+    $nama = $_SESSION["pemilik"]["nama"];
+    $email = $_SESSION["pemilik"]["email"];
+    $status = $_SESSION["pemilik"]["status"];
+     ?>
+    <?php endif ?>
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -60,53 +75,95 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- <pre><?php print_r($_SESSION);?></pre> -->
-                        <?php if (isset($_SESSION["admin"])): ?>
-                        <?php 
-                        $nama = $_SESSION["admin"]["nama"];
-                        $email = $_SESSION["admin"]["email"];
-                        $status = $_SESSION["admin"]["status"];
-                         ?>
-                        <?php else: ?>
-                        <?php 
-                        $nama = $_SESSION["pemilik"]["nama"];
-                        $email = $_SESSION["pemilik"]["email"];
-                        $status = $_SESSION["pemilik"]["status"];
-                         ?>
-                        <?php endif ?>
-                         <div class="col-xl-6">
-                            <table class="table table-bordered bg-white border-primary">
-                             <thead class="table-info">
-                                <tr>
-                                    <th colspan="2"><i class="fas fa-sign-in-alt mr-1"></i>Detail Login</th>
-                                </tr>
-                             </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Nama : </th>
-                                        <td><?= $nama; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Email : </th>
-                                        <td class="text-info"><?= $email; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Status : </th>
-                                        <td class="text-success"><?= $status; ?></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot class="table-info">
-                                    <tr>
-                                        <td colspan="2" class="small"><?= date("l jS \of F Y h:i:s A"); ?></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header text-center">
+                                        <i class="fas fa-chart-bar mr-1"></i>
+                                        Cek Jumlah Stok Menu pada Grafik Batang
+                                    </div>
+                                    <div class="card-body">
+                                        <div  class="col-xl-12" id="data_menu">
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-responsive-sm bg-white border-primary">
+                                        <thead class="table-info">
+                                            <tr>
+                                                <th colspan="2"><i class="fas fa-sign-in-alt mr-1"></i>Detail Login</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Nama : </th>
+                                                <td><?= $nama; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email : </th>
+                                                <td class="text-info"><?= $email; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Status : </th>
+                                                <td class="text-success"><?= $status; ?></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="table-info">
+                                            <tr>
+                                                <td colspan="2" class="small"><?= date("l jS \of F Y h:i:s A"); ?></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
 
 <?php include_once('../_footer.php'); ?>
+                            <?php
+
+                            $menu = array();
+                            $stok = array();
+
+                                    $sql = mysqli_query($koneksi, "SELECT * FROM menu");
+
+                                    while ($row = mysqli_fetch_assoc($sql)) {
+                                        $menu[]=$row["nama_menu"];
+                                        $stok[]=intval($row["stok_menu"]);
+                                    }
+
+                            ?>
+                            <script src="<?= base_url('admin/_assets/highcharts/highcharts.js');?>"></script>
+                            <script src="<?= base_url('admin/_assets/highcharts/exporting.js');?>"></script>
+                            <script src="<?= base_url('admin/_assets/highcharts/export-data.js');?>"></script>
+                            <script src="<?= base_url('admin/_assets/highcharts/accessibility.js');?>"></script>
+                            <script type="text/javascript">
+                                var chart = Highcharts.chart('data_menu', {
+
+                                title: {
+                                    text: 'Grafik Jumlah Stok Menu'
+                                },
+
+                                subtitle: {
+                                    text: 'Ge-Ju'
+                                },
+
+                                xAxis: {
+                                    categories: <?=json_encode($menu);?>
+                                },
+
+                                series: [{
+                                    type: 'column',
+                                    colorByPoint: true,
+                                    data: <?=json_encode($stok)?>,
+                                    showInLegend: false
+                                }]
+
+                                });
+                            </script>
 
 <?php 
 } else {

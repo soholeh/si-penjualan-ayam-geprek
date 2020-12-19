@@ -50,32 +50,34 @@ include_once('../header.php'); ?>
                                     Alamat : <?= $detail['alamat_pengiriman'];?>
                                 </div>
                             </div>
-                            <table class="table table-responsive-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Menu</th>
-                                        <th>Harga</th>
-                                        <th>Jumlah</th>
-                                        <th>Sub Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 1; ?>
-                                    <?php $ambil = mysqli_query($koneksi, "SELECT * FROM detail_penjualan WHERE id_penjualan='$_GET[id]'"); 
-                                                                    ?>
-                                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
-                                    <tr>
-                                        <td><?= $no; ?></td>
-                                        <td><?= $pecah['nama'];?></td>
-                                        <td>Rp. <?= number_format($pecah['harga']);?></td>
-                                        <td><?= $pecah['jumlah'];?></td>
-                                        <td>Rp. <?= number_format($pecah['subharga']);?></td>
-                                    </tr>
-                                    <?php $no ++; ?>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-responsive-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Menu</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Sub Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1; ?>
+                                        <?php $ambil = mysqli_query($koneksi, "SELECT * FROM detail_penjualan WHERE id_penjualan='$_GET[id]'"); 
+                                                                        ?>
+                                        <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                                        <tr>
+                                            <td><?= $no; ?></td>
+                                            <td><?= $pecah['nama'];?></td>
+                                            <td>Rp. <?= number_format($pecah['harga']);?></td>
+                                            <td><?= $pecah['jumlah'];?></td>
+                                            <td>Rp. <?= number_format($pecah['subharga']);?></td>
+                                        </tr>
+                                        <?php $no ++; ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="alert alert-info">
                                 <p>
                                     Silahkan melakukan pembayaran Rp. <?= number_format($detail['total_penjualan']);?>

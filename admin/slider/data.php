@@ -26,7 +26,9 @@ include_once('../_header.php'); ?>
                                             <tr>
                                                 <th>Urutan</th>
                                                 <th>Foto</th>
+                                                <?php if (isset($_SESSION["admin"])): ?>
                                                 <th>Aksi</th>
+                                                <?php endif ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -41,9 +43,11 @@ include_once('../_header.php'); ?>
                                                 <td>
                                                     <img src="foto/<?= $slider['foto_slider'];?>" class="img-thumbnail" width="200">
                                                 </td>
+                                                <?php if (isset($_SESSION["admin"])): ?>                                                   
                                                 <td>
                                                     <a href="edit.php?id=<?= $slider['id_slider'];?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                                 </td>
+                                                <?php endif ?>
                                             </tr>
                                             <?php $no ++; ?>
                                             <?php } ?>

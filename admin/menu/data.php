@@ -69,7 +69,17 @@ include_once('../_header.php'); ?>
                                                 while ($row = mysqli_fetch_assoc($result)) { ?>
                                                 <tr>
                                                     <td><?= $nomor; ?>.</td>
-                                                    <td><?= $row['nama_kategori'];?></td>
+                                                    <td>
+                                                        <?php if ($row['nama_kategori']=="Makanan Berat"): ?>
+                                                            <span class="badge badge-success"><?= $row['nama_kategori']; ?></span>
+                                                        <?php endif ?>
+                                                        <?php if ($row['nama_kategori']=="Makanan Ringan"): ?>
+                                                            <span class="badge badge-warning"><?= $row['nama_kategori']; ?></span>
+                                                        <?php endif ?>
+                                                        <?php if ($row['nama_kategori']=="Minuman"): ?>
+                                                            <span class="badge badge-info"><?= $row['nama_kategori']; ?></span>
+                                                        <?php endif ?>   
+                                                    </td>
                                                     <td><?= $row['nama_menu'];?></td>
                                                     <td>Rp. <?= number_format($row['harga_menu']);?></td>
                                                     <td>

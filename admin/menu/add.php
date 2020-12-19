@@ -77,7 +77,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
 								    <div class="form-group">
 								        <label class="font-weight-bold">Kategori</label>
 								        <select name="id_kategori" class="form-control" required>
-								            <option>-Pilih Kategori-</option>
+								            <option disabled selected value="">-Pilih Kategori-</option>
 								            <?php foreach ($datakategori as $key => $value):?>
 								            <option value="<?= $value["id_kategori"] ?>"><?= $value["nama_kategori"] ?></option>
 								            <?php endforeach ?>

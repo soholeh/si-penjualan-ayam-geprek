@@ -16,7 +16,7 @@ include_once('../_header.php'); ?>
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="card mb-4">
-                                    <div class="card-header">
+                                    <div class="card-header text-center">
                                         <i class="fas fa-chart-bar mr-1"></i>
                                         Grafik Batang
                                     </div>
@@ -52,7 +52,7 @@ $stok = array();
                                 var chart = Highcharts.chart('data_menu', {
 
                                 title: {
-                                    text: 'Data Nama dan Jumlah Stok Menu'
+                                    text: 'Grafik Jumlah Stok Menu'
                                 },
 
                                 subtitle: {

@@ -26,39 +26,61 @@ if (empty($_SESSION["keranjang"]) OR !isset($_SESSION["keranjang"])) {
                             Keranjang Belanja Anda
                         </div>
                             <div class="container">
-                            <table class="table table-responsive-sm table-hover table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th>Menu</th>
-                                        <th>Details</th>
-                                        <th>QTY</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php $subtotal = 0; ?>
-                                    <?php foreach ($_SESSION['keranjang'] as $id_menu => $jumlah): ?>
-                                        <?php   $sql = "SELECT * FROM menu WHERE id_menu='$id_menu'";
-                                                $result = mysqli_query($koneksi, $sql);
-                                                $row = mysqli_fetch_assoc($result);
-                                                $total = $row["harga_menu"]*$jumlah;
-                                                $subtotal += $total;
-                                        ?>
-                                    <tr>
-                                        <td><img src="../admin/menu/foto_menu/<?= $row['foto_menu'];?>" style="width: 5rem;"></td>
-                                        <td><?= $row['nama_menu'];?> </br>Rp. <?= number_format($row['harga_menu']);?></td>
-                                        <td><?= $jumlah;?></td>
-                                        <td><?= number_format($total);?></td>
-                                    </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                                <tfoot>
-                                    <tr class="bg-primary">
-                                        <th colspan="3">Total Belanja</th>
-                                        <th>Rp. <?= number_format($subtotal);?></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-sm table-hover table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Menu</th>
+                                                <th>Details</th>
+                                                <th>QTY</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $subtotal = 0; ?>
+                                            <?php foreach ($_SESSION['keranjang'] as $id_menu => $jumlah): ?>
+                                                <?php   $sql = "SELECT * FROM menu WHERE id_menu='$id_menu'";
+                                                        $result = mysqli_query($koneksi, $sql);
+                                                        $row = mysqli_fetch_assoc($result);
+                                                        $total = $row["harga_menu"]*$jumlah;
+                                                        $subtotal += $total;
+                                                ?>
+                                            <tr>
+                                                <td><img src="../admin/menu/foto_menu/<?= $row['foto_menu'];?>" style="width: 5rem;"></td>
+                                                <td><?= $row['nama_menu'];?> </br>Rp. <?= number_format($row['harga_menu']);?></td>
+                                                <td><?= $jumlah;?></td>
+                                                <td><?= number_format($total);?></td>
+                                            </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="bg-primary">
+                                                <th colspan="3">Total Belanja</th>
+                                                <th>Rp. <?= number_format($subtotal);?></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            <div class="col-md-12">
+                                <div class="card mb-4 border-primary">
+                                    <div class="card-header text-center font-weight-bold border-primary bg-primary small">
+                                        <i class="fas fa-map-marker-alt mr-1"></i>
+                                        Cek Perkiraan Jarak Lokasi Ge-Ju dengan alamat anda
+                                    </div>
+                                    
+                                    <div class="alert alert-info mt-0 mb-0">
+                                        <div class="ratio">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.328123770873!2d110.35769421477787!3d-7.754980794410727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59765cc417cb%3A0xd8936cf38936fd57!2sRuang%20Tunggu%20Baru!5e0!3m2!1sid!2sid!4v1607645897836!5m2!1sid!2sid"
+                                            width="100%" height="319" allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-center border-primary bg-primary small">
+                                        <i class="fas fa-question-circle"></i>
+                                        Klik Menu <strong>Rute</strong> atau <strong>Lihat peta lebih besar</strong> dahulu lalu klik menu <strong>Rute</strong> pada Google Maps.
+                                    </div>
+                                </div>
+                            </div>
                                 <form action="" method="post">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -74,7 +96,7 @@ if (empty($_SESSION["keranjang"]) OR !isset($_SESSION["keranjang"])) {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <select name="id_ongkir" class="custom-select" required>
-                                                <option value="">Pilih Ongkir</option>
+                                                <option disabled selected value="">Pilih Jarak Ongkir</option>
                                                 <?php
                                                 $sql = "SELECT * FROM ongkir";
                                                 $result = mysqli_query($koneksi, $sql);

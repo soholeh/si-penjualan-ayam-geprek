@@ -22,7 +22,7 @@ include_once('../_header.php'); ?>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-responsive table-bordered" id="penjualan">
+                                            <table class="table table-responsive-sm table-bordered table-hover" id="penjualan">
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
@@ -30,7 +30,7 @@ include_once('../_header.php'); ?>
                                                         <th>Tanggal</th>
                                                         <th>Status</th>
                                                         <th>Total</th>
-                                                        <th>Aksi</th>
+                                                        <th class="text-center">Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -44,22 +44,24 @@ include_once('../_header.php'); ?>
                                                         <td><?= date("d F Y", strtotime($pecah["tanggal_penjualan"]));?></td>
                                                         <td class="text-center">
                                                             <?php if ($pecah['status_penjualan']=='Pending'): ?>
-                                                            <span class="badge badge-secondary small"><?= $pecah['status_penjualan'];?></span>
+                                                            <span class="badge badge-pill badge-secondary small"><?= $pecah['status_penjualan'];?></span>
                                                             <?php endif ?>
                                                             <?php if ($pecah['status_penjualan']=='Confirmed'): ?>
-                                                            <span class="badge badge-success small"><?= $pecah['status_penjualan'];?></span>
+                                                            <span class="badge badge-pill badge-success small"><?= $pecah['status_penjualan'];?></span>
                                                             <?php endif ?>
                                                             <?php if ($pecah['status_penjualan']=='Lunas'): ?>
-                                                            <span class="badge badge-primary small"><?= $pecah['status_penjualan'];?></span>
+                                                            <span class="badge badge-pill badge-primary small"><?= $pecah['status_penjualan'];?></span>
                                                             <?php endif ?>
                                                             <?php if ($pecah['status_penjualan']=='Batal'): ?>
-                                                            <span class="badge badge-danger small"><?= $pecah['status_penjualan'];?></span>
+                                                            <span class="badge badge-pill badge-danger small"><?= $pecah['status_penjualan'];?></span>
                                                             <?php endif ?>
                                                         </td>
                                                         <td>Rp. <?= number_format($pecah['total_penjualan']); ?></td>
                                                         <td>
                                                             <a href="detail.php?id=<?= $pecah['id_penjualan']; ?>" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
+                                                            <?php if (!isset($_SESSION["pemilik"])): ?>
                                                             <a href="del.php?id=<?= $pecah['id_penjualan'];?>" class="btn btn-danger" onClick="return confirm('Yakin akan menghapus penjualan <?= $pecah['nama']; ?>?')"><i class="fas fa-eraser"></i></a>
+                                                            <?php endif ?>
                                                             <?php if ($pecah['status_penjualan'] !== "Pending"): ?>
                                                             <a href="confirm.php?id=<?= $pecah['id_penjualan']; ?>" class="btn btn-success"><i class="fas fa-search-dollar"></i></a>
                                                             <?php endif ?>
