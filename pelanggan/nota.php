@@ -82,7 +82,7 @@ include_once('../header.php'); ?>
                                 <p>
                                     Silahkan melakukan pembayaran Rp. <?= number_format($detail['total_penjualan']);?>
                                     ke </br>
-                                    <strong>BANK BNI 134-001089-3278 AN. Haryadi</strong>
+                                    <strong>BANK BCA 0600542796 AN. HARYADI SE</strong>
                                 </p>
                             </div>
                             <?php if ($detail['status_penjualan']=='Pending'): ?>

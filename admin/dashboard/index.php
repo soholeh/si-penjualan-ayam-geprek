@@ -6,13 +6,13 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
     <!-- <pre><?php print_r($_SESSION);?></pre> -->
     <?php if (isset($_SESSION["admin"])): ?>
     <?php 
-    $nama = $_SESSION["admin"]["nama"];
+    $nama = $_SESSION["admin"]["nama_user"];
     $email = $_SESSION["admin"]["email"];
     $status = $_SESSION["admin"]["status"];
      ?>
     <?php else: ?>
     <?php 
-    $nama = $_SESSION["pemilik"]["nama"];
+    $nama = $_SESSION["pemilik"]["nama_user"];
     $email = $_SESSION["pemilik"]["email"];
     $status = $_SESSION["pemilik"]["status"];
      ?>

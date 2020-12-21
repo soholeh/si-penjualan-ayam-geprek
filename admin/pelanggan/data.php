@@ -64,7 +64,7 @@ include_once('../_header.php'); ?>
                                             while ($user = mysqli_fetch_assoc($sql)) { ?>
                                             <tr>
                                                 <td><?= $nomor; ?>.</td>
-                                                <td><?= $user['nama']; ?></td>
+                                                <td><?= $user['nama_user']; ?></td>
                                                 <td><?= $user['email']; ?></td>
                                                 <td><?= $user['telephone']; ?></td>
                                                 <?php if (isset($_SESSION["admin"])): ?>                                

@@ -61,19 +61,19 @@ if (isset($_POST["kirim"])) {
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="">Tanggal Mulai</label>
-                                                            <input type="date" class="form-control" name="tglm" value="<?= $tglm;?>">
+                                                            <input type="date" class="form-control" name="tglm" value="<?= $tglm;?>" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="">Tanggal Selesai</label>
-                                                            <input type="date" class="form-control" name="tgls" value="<?= $tgls;?>">
+                                                            <input type="date" class="form-control" name="tgls" value="<?= $tgls;?>" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="">Status</label>
-                                                            <select name="status" class="form-control">
+                                                            <select name="status" class="form-control" required>
                                                                 <option disabled selected value="">Pilih Status</option>
                                                                 <option value="Pending" <?= $status == "Pending"?"selected":""; ?>>Pending</option>
                                                                 <option value="Confirmed" <?= $status == "Confirmed"?"selected":""; ?>>Confirmed</option>
@@ -107,7 +107,7 @@ if (isset($_POST["kirim"])) {
                                                         <?php $total += $value["total_penjualan"]; ?>
                                                         <tr>
                                                             <td><?= $key+1;?></td>
-                                                            <td><?= $value["nama"];?></td>
+                                                            <td><?= $value["nama_user"];?></td>
                                                             <td><?= date("d F Y", strtotime($value["tanggal_penjualan"]));?></td>
                                                             <td>Rp. <?= number_format($value["total_penjualan"]);?></td>
                                                             <td><?= $value["status_penjualan"];?></td>

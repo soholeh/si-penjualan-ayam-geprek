@@ -13,11 +13,9 @@ include_once('header.php'); ?>
                                 <p class="lead font-weight-normal">
                                 Pembayaran dapat melalui rekening dibawah ini: </br>
                                 </br>
-                                Nama Bank: ... </br>
-                                No. Rek: ... </br>
-                                Nama: HARYADI. </br>
-                                Kode Bank: ... </br>
-                                Kode Swift: ... </br>
+                                Nama Bank: BCA </br>
+                                No. Rek: 0600542796 </br>
+                                Nama: HARYADI SE </br>
                                 </br>
                                 Kemudian lakukan konfirmasi di menu konfirmasi pembayaran.
                             </p>
@@ -38,7 +36,7 @@ include_once('header.php'); ?>
                         
                         <div class="alert alert-info mt-0 mb-0">
                             <div class="ratio">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.328123770873!2d110.35769421477787!3d-7.754980794410727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59765cc417cb%3A0xd8936cf38936fd57!2sRuang%20Tunggu%20Baru!5e0!3m2!1sid!2sid!4v1607645897836!5m2!1sid!2sid"
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.3320403074376!2d110.35806704115757!3d-7.754976807898351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58f58d7a0937%3A0xc5157e2c84ecf924!2sGudeg%20Mantep%C2%A8Mbok%20Tris%C2%A8!5e0!3m2!1sid!2sid!4v1608441949653!5m2!1sid!2sid"
                                 width="100%" height="319" allowfullscreen>
                                 </iframe>
                             </div>

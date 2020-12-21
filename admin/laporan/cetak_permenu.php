@@ -12,8 +12,7 @@ require_once '../vendor/autoload.php';
     $status = $_GET["status"];
     $semuadata = array();
 
-    $sql = mysqli_query($koneksi, "SELECT * FROM penjualan p LEFT JOIN user u ON
-    p.id_user = u.id_user WHERE status_penjualan = '$status' AND tanggal_penjualan BETWEEN '$tglm' AND '$tgls'");
+    $sql = mysqli_query($koneksi, "SELECT nama, harga, SUM(jumlah) AS terjual FROM penjualan LEFT JOIN detail_penjualan ON detail_penjualan.id_penjualan = penjualan.id_penjualan WHERE status_penjualan = '$status' AND tanggal_penjualan BETWEEN '$tglm' AND '$tgls' GROUP BY nama");
 
     while ($row = mysqli_fetch_assoc($sql)) {
         $semuadata[]=$row;
@@ -40,35 +39,40 @@ require_once '../vendor/autoload.php';
 
   <body>
 		<div class="container">    	
-		  	<h3 class="text-center">Laporan Penjualan Per-Periode</h3>
+		  	<h3 class="text-center">Laporan Penjualan Per-Menu</h3>
 		    <h5 class="text-center">Dari <?= date("d F Y",strtotime($tglm)); ?> hingga <?= date("d F Y",strtotime($tgls)); ?>.</h5> </br>
 			    <div class="table-responsive justify-content-center">
 					<table class="table table-responsive-sm table-bordered">
 					    <thead>
 					        <tr>
 					            <th>No</th>
-					            <th>Pelanggan</th>
-					            <th>Tanggal</th>
-					            <th>Jumlah</th>
-					            <th>Status</th>
+                                <th>Nama</th>
+                                <th>Harga</th>
+                                <th class="text-center">Terjual</th>
+                                <th>Total</th>
 					        </tr>
 					    </thead>
 					    <tbody>
-					        <?php $total = 0; ?>
-					        <?php foreach ($semuadata as $key => $value):?>
-					        <?php $total += $value["total_penjualan"]; ?>
-					        <tr>
-					            <td><?= $key+1;?></td>
-					            <td><?= $value["nama_user"];?></td>
-					            <td><?= date("d F Y", strtotime($value["tanggal_penjualan"]));?></td>
-					            <td>Rp. <?= number_format($value["total_penjualan"]);?></td>
-					            <td><?= $value["status_penjualan"];?></td>
-					        </tr>
-					        <?php endforeach ?>
+					        <?php $total = 0;
+                            $ttl = 0; ?>
+                            <?php foreach ($semuadata as $key => $value):?>
+                            <?php $sub = $value["harga"]*$value["terjual"];
+                            $ttl += $value["terjual"];
+                            $total += $sub;
+                             ?>
+                            <tr>
+                                <td><?= $key+1;?></td>
+                                <td><?= $value["nama"];?></td>
+                                <td>Rp. <?= number_format($value["harga"]);?></td>
+                                <td class="text-center"><?= $value["terjual"];?></td>
+                                <td>Rp. <?= number_format($sub);?></td>
+                            </tr>
+                            <?php endforeach ?>
 					    </tbody>
 					    <tfoot>
-					        <th colspan="3" class="text-center">Total</th>
-					        <th colspan="2">Rp. <?= number_format($total);?></th>
+					        <th class="text-center" colspan="3">Total</th>
+                            <th class="text-center"><?= $ttl; ?></th>
+                            <th>Rp. <?= number_format($total);?></th>
 					    </tfoot>
 					</table>
 			    </div>

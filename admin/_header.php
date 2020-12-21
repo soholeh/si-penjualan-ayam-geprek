@@ -94,10 +94,12 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-bar mr-2"></i></div>
                                 Grafik Stok Menu
                             </a> -->
-                            <a class="nav-link" href="<?= base_url('admin/slider/data.php');?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-angle-left"></i><i class="fas fa-angle-right mr-2"></i></div>
-                                Kelola Slider
-                            </a>
+                            <?php if (isset($_SESSION["admin"])): ?>
+                                <a class="nav-link" href="<?= base_url('admin/slider/data.php');?>">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-angle-left"></i><i class="fas fa-angle-right mr-2"></i></div>
+                                    Kelola Slider
+                                </a>
+                            <?php endif ?>
                             <!-- <a class="nav-link" href="<?= base_url('admin/atur/edit.php');?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cogs mr-1"></i></div>
                                 Pengaturan
@@ -110,9 +112,10 @@ if (isset($_SESSION['admin']) OR ($_SESSION['pemilik'])) { ?>
                     <div class="sb-sidenav-footer fixed-bottom">
                         <div class="small">Logged in as:</div>
                         <?php if (isset($_SESSION["admin"])): ?>
-                        <?= $_SESSION["admin"]["nama"];?>
-                        <?php else: ?>
-                        <?= $_SESSION["pemilik"]["nama"];?>
+                        <?= $_SESSION["admin"]["nama_user"];?>
+                        <?php endif ?>
+                        <?php if (isset($_SESSION["pemilik"])): ?>
+                        <?= $_SESSION["pemilik"]["nama_user"];?>
                         <?php endif ?>
                     </div>
                 </nav>

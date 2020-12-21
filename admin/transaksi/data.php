@@ -40,7 +40,7 @@ include_once('../_header.php'); ?>
                                                     while ($pecah = mysqli_fetch_assoc($sql)) { ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= $pecah['nama'];?></td>
+                                                        <td><?= $pecah['nama_user'];?></td>
                                                         <td><?= date("d F Y", strtotime($pecah["tanggal_penjualan"]));?></td>
                                                         <td class="text-center">
                                                             <?php if ($pecah['status_penjualan']=='Pending'): ?>
